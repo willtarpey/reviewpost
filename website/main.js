@@ -52,6 +52,25 @@ if ('IntersectionObserver' in window) {
   reveals.forEach((el) => el.classList.add('in'));
 }
 
+/* Parallax: images with data-speed drift up or down as their section scrolls past. */
+const drifters = document.querySelectorAll('[data-speed]');
+if (drifters.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const mid = innerHeight / 2;
+    drifters.forEach((el) => {
+      const box = el.parentElement.getBoundingClientRect();
+      if (box.bottom < -200 || box.top > innerHeight + 200) return;
+      const offset = box.top + box.height / 2 - mid; // 0 when the section is centred on screen
+      el.style.setProperty('--py', `${(offset * Number(el.dataset.speed)).toFixed(1)}px`);
+    });
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  addEventListener('resize', update);
+  update();
+}
+
 /* Designs marquee: a second copy of the images makes the loop seamless. */
 const track = document.querySelector('.marquee-track');
 [...(track?.children || [])].forEach((img) => {

@@ -178,10 +178,14 @@ p { margin: 0; }
 .size-list li { padding: 12px 16px; border-radius: 12px; background: var(--panel); border: 1px solid var(--line); color: var(--muted); font-size: 15px; }
 .size-list b { color: var(--ink); margin-right: 8px; }
 .sizes-art { position: relative; aspect-ratio: 1.15 / 1; }
-.sizes-art img { position: absolute; border-radius: 12px; box-shadow: 0 30px 60px -20px rgba(0,0,0,.75), 0 0 0 1px rgba(255,255,255,.05); }
-.s-story { height: 96%; width: auto; left: 0; top: 2%; }
-.s-post { width: 46%; left: 40%; top: 4%; }
-.s-land { width: 62%; right: 0; bottom: 6%; }
+/* Each size floats like the hero posts and drifts at its own speed on scroll (--py is set by main.js). */
+.sizes-art img {
+  position: absolute; border-radius: 14px; transform: translate3d(0, var(--py, 0px), 0); will-change: transform;
+  box-shadow: 0 34px 70px -24px rgba(0,0,0,.8), 0 0 0 1px rgba(255,255,255,.06);
+}
+.sizes-art .s-story { height: 92%; width: auto; left: 0; top: 2%; z-index: 1; animation: float-l 10s var(--ease) infinite; }
+.sizes-art .s-post { width: 44%; right: 2%; top: 0; z-index: 2; transform: translate3d(0, var(--py, 0px), 0) rotate(3deg); animation: float-r 11s var(--ease) infinite -3s; }
+.sizes-art .s-land { width: 58%; right: 8%; bottom: 0; z-index: 3; transform: translate3d(0, var(--py, 0px), 0) rotate(-2deg); animation: float 9s var(--ease) infinite -6s; }
 
 /* pricing */
 .glow-pricing { width: 900px; height: 900px; left: 50%; top: 120px; translate: -50% 0; }

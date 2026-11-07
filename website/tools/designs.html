@@ -21,7 +21,11 @@ const BRANDS = {
   coffee: { businessName: 'Harbour Coffee Co.', handle: '@harbourcoffee', website: 'harbourcoffee.co.uk', primary: '#16170f', accent: '#eefca6', text: '#ffffff', font: 'inter' },
   garden: { businessName: 'Greenleaf Garden Centre', handle: '@greenleafgardens', website: 'greenleaf.co.uk', primary: '#22412f', accent: '#f2c46d', text: '#ffffff', font: 'jakarta' },
   bakery: { businessName: 'Crumb & Co.', handle: '@crumbandco', website: 'crumbandco.co.uk', primary: '#7a2e2a', accent: '#f7d9c4', text: '#ffffff', font: 'fraunces' },
-  salon: { businessName: 'Studio Nine', handle: '@studionine', website: 'studionine.co.uk', primary: '#1d2a4d', accent: '#ff9e7a', text: '#ffffff', font: 'poppins' }
+  salon: { businessName: 'Studio Nine', handle: '@studionine', website: 'studionine.co.uk', primary: '#1d2a4d', accent: '#ff9e7a', text: '#ffffff', font: 'poppins' },
+  // Pastel palettes for the "Every size" section.
+  lavender: { businessName: 'Harbour Coffee Co.', handle: '@harbourcoffee', website: 'harbourcoffee.co.uk', primary: '#dcd6fb', accent: '#5a47c9', text: '#1e1840', font: 'jakarta' },
+  peach: { businessName: 'Harbour Coffee Co.', handle: '@harbourcoffee', website: 'harbourcoffee.co.uk', primary: '#ffdccb', accent: '#d9552f', text: '#3b1a0e', font: 'fraunces' },
+  mint: { businessName: 'Harbour Coffee Co.', handle: '@harbourcoffee', website: 'harbourcoffee.co.uk', primary: '#cdeedc', accent: '#1d7a52', text: '#0f3324', font: 'poppins' }
 };
 // [file, design, brand, size]
 const JOBS = [
@@ -30,7 +34,7 @@ const JOBS = [
   ['g-polaroid', 'polaroid', 'coffee', 'post'], ['g-luxe', 'luxe', 'bakery', 'post'], ['g-ticket', 'ticket', 'coffee', 'post'],
   ['g-aurora', 'aurora', 'garden', 'post'], ['g-bold', 'bold', 'salon', 'post'], ['g-split', 'split', 'bakery', 'post'],
   ['g-badge', 'badge', 'garden', 'post'], ['g-marker', 'marker', 'coffee', 'post'], ['g-duotone', 'duotone', 'salon', 'post'],
-  ['size-post', 'aurora', 'coffee', 'post'], ['size-story', 'aurora', 'coffee', 'story'], ['size-landscape', 'aurora', 'coffee', 'landscape'],
+  ['size-post', 'stack', 'peach', 'post'], ['size-story', 'shapes', 'lavender', 'story'], ['size-landscape', 'badge', 'mint', 'landscape'],
   ['brand-1', 'poster', 'coffee', 'post'], ['brand-2', 'poster', 'garden', 'post'], ['brand-3', 'poster', 'bakery', 'post'], ['brand-4', 'poster', 'salon', 'post']
 ];
 async function renderAll() {
@@ -40,7 +44,7 @@ async function renderAll() {
   for (const [file, design, b, size] of JOBS) {
     const { w, h } = SIZES[size];
     const c = document.createElement('canvas'); c.width = w; c.height = h;
-    const brand = BRANDS[b], r = REVIEWS[b];
+    const brand = BRANDS[b], r = REVIEWS[b] || REVIEWS.coffee;
     TEMPLATES[design].draw(c.getContext('2d'), w, h, { ...r, rating: 5, source: 'Google', sourceLabel: 'Google review', handle: brand.handle, brand, style: { stars: 'rounded', corners: 'rounded' }, logo: null, bg: null });
     const scale = size === 'post' ? 720 / w : 720 / Math.max(w, h) * (size === 'story' ? 1.25 : 1.4);
     const s = document.createElement('canvas'); s.width = Math.round(w * scale); s.height = Math.round(h * scale);

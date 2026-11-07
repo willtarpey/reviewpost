@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <!-- Draws real ReviewPost designs for the website. Run: node render.mjs (writes ../img/designs/*.webp) -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Poppins:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Fraunces:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Poppins:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Fraunces:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@500&family=Allura&family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Bodoni+Moda:wght@500&display=swap">
 <script src="../../reviewshot/vendor/qrcode.js"></script>
 <script src="../../reviewshot/templates.js"></script>
@@ -25,27 +25,64 @@ const BRANDS = {
   // Pastel palettes for the "Every size" section.
   lavender: { businessName: 'Harbour Coffee Co.', handle: '@harbourcoffee', website: 'harbourcoffee.co.uk', primary: '#dcd6fb', accent: '#5a47c9', text: '#1e1840', font: 'jakarta' },
   peach: { businessName: 'Harbour Coffee Co.', handle: '@harbourcoffee', website: 'harbourcoffee.co.uk', primary: '#ffdccb', accent: '#d9552f', text: '#3b1a0e', font: 'fraunces' },
-  mint: { businessName: 'Harbour Coffee Co.', handle: '@harbourcoffee', website: 'harbourcoffee.co.uk', primary: '#cdeedc', accent: '#1d7a52', text: '#0f3324', font: 'poppins' }
+  mint: { businessName: 'Harbour Coffee Co.', handle: '@harbourcoffee', website: 'harbourcoffee.co.uk', primary: '#cdeedc', accent: '#1d7a52', text: '#0f3324', font: 'poppins' },
+  // Varied palettes for the designs carousel.
+  sand: { businessName: 'Harbour Coffee Co.', handle: '@harbourcoffee', website: 'harbourcoffee.co.uk', primary: '#eadfcf', accent: '#7a4a2a', text: '#2b1a0e', font: 'fraunces' },
+  sage: { businessName: 'Harbour Coffee Co.', handle: '@harbourcoffee', website: 'harbourcoffee.co.uk', primary: '#d3e2cc', accent: '#2f5d3a', text: '#1d3323', font: 'jakarta' },
+  paper: { businessName: 'Crumb & Co.', handle: '@crumbandco', website: 'crumbandco.co.uk', primary: '#f4efe6', accent: '#e2483d', text: '#1b1b1b', font: 'playfair' },
+  sky: { businessName: 'Greenleaf Garden Centre', handle: '@greenleafgardens', website: 'greenleaf.co.uk', primary: '#cfe6ff', accent: '#0b4bd6', text: '#0a1d3d', font: 'inter' },
+  midnight: { businessName: 'Studio Nine', handle: '@studionine', website: 'studionine.co.uk', primary: '#0b0b1e', accent: '#39ffb0', text: '#ffffff', font: 'grotesk' },
+  forest: { businessName: 'Crumb & Co.', handle: '@crumbandco', website: 'crumbandco.co.uk', primary: '#0f3d2e', accent: '#d9c58b', text: '#ffffff', font: 'playfair' },
+  butter: { businessName: 'Harbour Coffee Co.', handle: '@harbourcoffee', website: 'harbourcoffee.co.uk', primary: '#fff0b3', accent: '#1a1a1a', text: '#1a1a1a', font: 'grotesk' },
+  lilac: { businessName: 'Greenleaf Garden Centre', handle: '@greenleafgardens', website: 'greenleaf.co.uk', primary: '#e6ddff', accent: '#6c3cf0', text: '#1f1147', font: 'jakarta' },
+  tomato: { businessName: 'Studio Nine', handle: '@studionine', website: 'studionine.co.uk', primary: '#ff5a36', accent: '#fff1e0', text: '#ffffff', font: 'poppins' },
+  cobalt: { businessName: 'Crumb & Co.', handle: '@crumbandco', website: 'crumbandco.co.uk', primary: '#2340ff', accent: '#ffe14d', text: '#ffffff', font: 'grotesk' },
+  blush: { businessName: 'Greenleaf Garden Centre', handle: '@greenleafgardens', website: 'greenleaf.co.uk', primary: '#ffd6e0', accent: '#b3124f', text: '#3a0a1d', font: 'fraunces' },
+  ink: { businessName: 'Harbour Coffee Co.', handle: '@harbourcoffee', website: 'harbourcoffee.co.uk', primary: '#121212', accent: '#ffffff', text: '#ffffff', font: 'inter' },
+  teal: { businessName: 'Studio Nine', handle: '@studionine', website: 'studionine.co.uk', primary: '#0e6b6b', accent: '#ffd166', text: '#ffffff', font: 'jakarta' },
+  terracotta: { businessName: 'Crumb & Co.', handle: '@crumbandco', website: 'crumbandco.co.uk', primary: '#c4552b', accent: '#ffe2bf', text: '#ffffff', font: 'playfair' },
+  orange: { businessName: 'Harbour Coffee Co.', handle: '@harbourcoffee', website: 'harbourcoffee.co.uk', primary: '#ff8a1f', accent: '#1a1a1a', text: '#1a1a1a', font: 'grotesk' },
+  coral: { businessName: 'Greenleaf Garden Centre', handle: '@greenleafgardens', website: 'greenleaf.co.uk', primary: '#ff9b85', accent: '#2b0f0b', text: '#2b0f0b', font: 'poppins' },
+  plum: { businessName: 'Studio Nine', handle: '@studionine', website: 'studionine.co.uk', primary: '#3b1240', accent: '#ff9ad5', text: '#ffffff', font: 'fraunces' }
 };
 // [file, design, brand, size]
 const JOBS = [
   ['hero-main', 'spotlight', 'coffee', 'post'], ['hero-left', 'testimonial', 'garden', 'post'], ['hero-right', 'glass', 'salon', 'post'],
-  ['g-editorial', 'editorial', 'bakery', 'post'], ['g-card', 'card', 'garden', 'post'], ['g-neon', 'neon', 'salon', 'post'],
-  ['g-polaroid', 'polaroid', 'coffee', 'post'], ['g-luxe', 'luxe', 'bakery', 'post'], ['g-ticket', 'ticket', 'coffee', 'post'],
-  ['g-aurora', 'aurora', 'garden', 'post'], ['g-bold', 'bold', 'salon', 'post'], ['g-split', 'split', 'bakery', 'post'],
-  ['g-badge', 'badge', 'garden', 'post'], ['g-marker', 'marker', 'coffee', 'post'], ['g-duotone', 'duotone', 'salon', 'post'],
+  // Designs carousel, in display order: [file, design, palette, size, review, photo]
+  ['g-polaroid', 'polaroid', 'sand', 'post', 'coffee', 'photos/coffee-latte.jpg'], ['g-neon', 'neon', 'midnight', 'post', 'salon'],
+  ['g-bold', 'bold', 'tomato', 'post', 'salon'], ['g-bubble', 'bubble', 'sky', 'post', 'salon'],
+  ['g-luxe', 'luxe', 'forest', 'post', 'bakery'], ['g-score', 'score', 'orange', 'post', 'coffee'],
+  ['g-badge', 'badge', 'blush', 'post', 'garden'], ['g-glass', 'glass', 'ink', 'post', 'coffee', 'photos/coffee-latte.jpg'],
+  ['g-split', 'split', 'cobalt', 'post', 'bakery'], ['g-ticket', 'ticket', 'butter', 'post', 'coffee'],
+  ['g-marker', 'marker', 'ink', 'post', 'coffee'], ['g-shapes', 'shapes', 'coral', 'post', 'garden'],
   ['size-post', 'stack', 'peach', 'post'], ['size-story', 'shapes', 'lavender', 'story'], ['size-landscape', 'badge', 'mint', 'landscape'],
   ['brand-1', 'poster', 'coffee', 'post'], ['brand-2', 'poster', 'garden', 'post'], ['brand-3', 'poster', 'bakery', 'post'], ['brand-4', 'poster', 'salon', 'post']
 ];
-async function renderAll() {
-  const fams = ['Inter', 'Plus Jakarta Sans', 'Poppins', 'Fraunces', 'Playfair Display', 'DM Sans'];
+// Carousel candidates: [file, design, palette, review, photo]
+const OPTIONS = [
+  ['opt-01', 'polaroid', 'sand', 'coffee', 'photos/coffee-latte.jpg'], ['opt-02', 'polaroid', 'sage', 'coffee', 'photos/coffee-cheers.jpg'],
+  ['opt-03', 'glass', 'ink', 'coffee', 'photos/coffee-latte.jpg'], ['opt-04', 'editorial', 'paper', 'bakery'],
+  ['opt-05', 'card', 'sky', 'garden'], ['opt-06', 'neon', 'midnight', 'salon'],
+  ['opt-07', 'luxe', 'forest', 'bakery'], ['opt-08', 'ticket', 'butter', 'coffee'],
+  ['opt-09', 'aurora', 'lilac', 'garden'], ['opt-10', 'bold', 'tomato', 'salon'],
+  ['opt-11', 'split', 'cobalt', 'bakery'], ['opt-12', 'badge', 'blush', 'garden'],
+  ['opt-13', 'marker', 'ink', 'coffee'], ['opt-14', 'duotone', 'teal', 'salon'],
+  ['opt-15', 'minimal', 'terracotta', 'bakery'], ['opt-16', 'score', 'orange', 'coffee'],
+  ['opt-17', 'bubble', 'sky', 'salon'], ['opt-18', 'testimonial', 'plum', 'salon'],
+  ['opt-19', 'spotlight', 'butter', 'bakery'], ['opt-20', 'shapes', 'coral', 'garden']
+];
+const loadImg = (src) => new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = src; });
+async function renderAll(set) {
+  const fams = ['Space Grotesk', 'Inter', 'Plus Jakarta Sans', 'Poppins', 'Fraunces', 'Playfair Display', 'DM Sans'];
   await Promise.all([...fams.flatMap((f) => ['500', '600', '700', '800'].map((w) => document.fonts.load(`${w} 32px "${f}"`))), ...DISPLAY_LOADS.map((f) => document.fonts.load(f)), document.fonts.load('italic 600 32px "Playfair Display"')]);
   const out = {};
-  for (const [file, design, b, size] of JOBS) {
+  const list = set === 'options' ? OPTIONS.map(([f, d, b, rv, ph]) => [f, d, b, 'post', rv, ph]) : JOBS;
+  for (const [file, design, b, size, rv, photo] of list) {
     const { w, h } = SIZES[size];
+    const bg = photo ? await loadImg(photo) : null;
     const c = document.createElement('canvas'); c.width = w; c.height = h;
-    const brand = BRANDS[b], r = REVIEWS[b] || REVIEWS.coffee;
-    TEMPLATES[design].draw(c.getContext('2d'), w, h, { ...r, rating: 5, source: 'Google', sourceLabel: 'Google review', handle: brand.handle, brand, style: { stars: 'rounded', corners: 'rounded' }, logo: null, bg: null });
+    const brand = BRANDS[b], r = REVIEWS[rv || b] || REVIEWS.coffee;
+    TEMPLATES[design].draw(c.getContext('2d'), w, h, { ...r, rating: 5, source: 'Google', sourceLabel: 'Google review', handle: brand.handle, brand, style: { stars: 'rounded', corners: 'rounded' }, logo: null, bg });
     const scale = size === 'post' ? 720 / w : 720 / Math.max(w, h) * (size === 'story' ? 1.25 : 1.4);
     const s = document.createElement('canvas'); s.width = Math.round(w * scale); s.height = Math.round(h * scale);
     const sx = s.getContext('2d'); sx.imageSmoothingQuality = 'high'; sx.drawImage(c, 0, 0, s.width, s.height);

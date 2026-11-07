@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Poppins:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Fraunces:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@500&family=Allura&family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Bodoni+Moda:wght@500&display=swap">
+<link rel="stylesheet" href="assets.css">
+<script src="/reviewshot/templates.js"></script>
+<script src="/reviewshot/templates-more.js"></script>
+<script src="assets.js" defer></script>
+<title>youtube-banner</title>
+</head>
+<body>
+
+<style>
+  /* YouTube channel art: 2560×1440. Everything important sits in the 1546×423 safe area in the middle,
+     which is all a phone shows. Desktop shows the full-width middle strip; TVs show the whole image. */
+  body { width: 2560px; height: 1440px; position: relative; background: #0e0f0b; background-image: none; }
+  .wall { position: absolute; left: 50%; top: 50%; width: 3400px; transform: translate(-50%, -50%) rotate(-7deg);
+    display: grid; grid-template-columns: repeat(11, 280px); gap: 30px; justify-content: center; opacity: .32; filter: blur(1.5px) saturate(.85); }
+  .wall canvas { width: 280px; height: 280px; border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,.5); }
+  .wall canvas:nth-child(odd) { transform: translateY(155px); }
+  /* Darkens the centre so the copy reads cleanly, and fades the edges on TV. */
+  .shade { position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 1250px 520px at 50% 50%, rgba(14,15,11,.98) 45%, rgba(14,15,11,.9) 68%, rgba(14,15,11,0) 100%),
+      linear-gradient(rgba(14,15,11,.85), rgba(14,15,11,0) 24%, rgba(14,15,11,0) 76%, rgba(14,15,11,.85)); }
+  .lime-glow { position: absolute; width: 1200px; height: 1200px; left: 1200px; top: 120px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(238,252,166,.14), rgba(238,252,166,0) 60%); }
+  .safe { position: absolute; left: 507px; top: 508px; width: 1546px; height: 423px;
+    display: grid; grid-template-columns: 1fr 620px; align-items: center; gap: 40px; padding: 0 30px 0 40px; }
+  .copy .brand { display: flex; align-items: center; gap: 20px; }
+  .copy .badge { width: 66px; height: 66px; }
+  .copy .logo { height: 44px; }
+  .safe h1 { font-size: 70px; line-height: 1.02; margin: 30px 0 18px; letter-spacing: -.035em; }
+  .safe .sub { font-size: 25px; }
+  .safe .pill { margin-top: 26px; font-size: 19px; padding: 12px 20px; }
+  .fan { position: relative; height: 423px; }
+  .fan canvas { position: absolute; }
+  .guide { display: none; position: absolute; left: 507px; top: 508px; width: 1546px; height: 423px; outline: 2px dashed #f0f; }
+  body.show-safe .guide { display: block; }
+</style>
+
+<div class="wall" id="wall"></div>
+<div class="shade"></div>
+<div class="lime-glow"></div>
+
+<div class="safe">
+  <div class="copy">
+    <div class="brand"><img class="badge" src="/reviewshot/icons/icon-source.png" alt=""><img class="logo" src="/reviewshot/assets/logo.png" alt="ReviewPost"></div>
+    <h1>Turn great reviews into <em>scroll-stopping</em> posts</h1>
+    <p class="sub">One click from Google &amp; Trustpilot. 21 designs in your brand.</p>
+    <div class="pill">✦ Free on the Chrome Web Store</div>
+  </div>
+  <div class="fan">
+    <canvas class="post" data-design="editorial" data-sample="0" data-brand="garden" style="width:270px;left:10px;top:86px;transform:rotate(-8deg)"></canvas>
+    <canvas class="post" data-design="luxe" data-sample="1" data-brand="bakery" style="width:270px;right:0;top:86px;transform:rotate(8deg)"></canvas>
+    <canvas class="post" data-design="glass" data-sample="2" data-brand="reviewpost" style="width:340px;left:150px;top:40px;z-index:2"></canvas>
+  </div>
+</div>
+<div class="guide"></div>
+
+<script>
+  // A tilted wall of real designs behind everything, cycling designs, brands and reviews.
+  const designs = ['aurora', 'card', 'neon', 'polaroid', 'spotlight', 'poster', 'split', 'bubble', 'testimonial', 'ticket', 'bold', 'duotone', 'minimal', 'badge', 'stack', 'score', 'marker', 'shapes'];
+  const brands = ['salon', 'garden', 'bakery', 'reviewpost'];
+  const wall = document.getElementById('wall');
+  for (let i = 0; i < 66; i++) {
+    const c = document.createElement('canvas');
+    c.className = 'post';
+    c.dataset.design = designs[(i * 7) % designs.length];
+    c.dataset.brand = brands[(i * 3 + Math.floor(i / 11)) % brands.length];
+    c.dataset.sample = String(i % 3);
+    c.dataset.w = c.dataset.h = '560';
+    wall.append(c);
+  }
+  if (location.hash === '#safe') document.body.classList.add('show-safe');
+</script>
+</body>
+</html>

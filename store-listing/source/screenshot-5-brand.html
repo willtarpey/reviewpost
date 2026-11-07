@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Poppins:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Fraunces:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@500&family=Allura&family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Bodoni+Moda:wght@500&display=swap">
+<link rel="stylesheet" href="assets.css">
+<script src="/reviewshot/templates.js"></script>
+<script src="/reviewshot/templates-more.js"></script>
+<script src="assets.js" defer></script>
+<title>screenshot-5-brand</title>
+</head>
+<body>
+
+<style>
+  .match { width: 640px; background: #1f1f23; border: 1px solid #34343a; border-radius: 16px; padding: 18px; margin-bottom: 26px; }
+  .match label { display: block; font-weight: 700; font-size: 14px; margin-bottom: 10px; }
+  .match .row { display: flex; gap: 10px; }
+  .match .input { flex: 1; background: #111113; border: 1px solid #eefca6; border-radius: 12px; padding: 13px 14px; font-size: 15px; }
+  .match .btn { border: 0; border-radius: 12px; padding: 0 22px; background: #eefca6; color: #16170f; font-weight: 700; font-size: 15px; display: grid; place-items: center; }
+  .match .ok { margin-top: 12px; font-size: 13.5px; color: #a1a1aa; display: flex; align-items: center; gap: 6px; }
+  .match .ok i { width: 16px; height: 16px; border-radius: 4px; display: inline-block; border: 1px solid rgba(255,255,255,.2); }
+  .row3 { display: flex; gap: 20px; }
+  .row3 figure { margin: 0; }
+  .row3 canvas { width: 200px; }
+  .row3 figcaption { margin-top: 10px; font-size: 13px; color: #a1a1aa; text-align: center; }
+  .row3 figcaption b { color: #fff; display: block; font-size: 14px; }
+</style>
+<div class="glow" style="right:60px;top:100px"></div>
+<div class="frame">
+  <div class="copy">
+    <img class="logo" src="/reviewshot/assets/logo.png" alt="">
+    <h1>Match your brand in <em>one click</em></h1>
+    <p class="sub">Type in your website and ReviewPost picks up your colours. Agencies can keep up to 5 brand kits for their clients.</p>
+  </div>
+  <div class="stage" style="display:flex;flex-direction:column;justify-content:center">
+    <div class="match">
+      <label>Your website</label>
+      <div class="row"><div class="input">greenleafgardens.co.uk</div><div class="btn">Match</div></div>
+      <div class="ok"><i style="background:#22412f"></i><i style="background:#f2c46d"></i> Matched colours from greenleafgardens.co.uk</div>
+    </div>
+    <div class="row3">
+      <figure><canvas class="post" data-design="card" data-sample="1" data-brand="garden"></canvas><figcaption><b>Greenleaf</b>Garden centre</figcaption></figure>
+      <figure><canvas class="post" data-design="card" data-sample="0" data-brand="bakery"></canvas><figcaption><b>Crumb &amp; Co.</b>Bakery</figcaption></figure>
+      <figure><canvas class="post" data-design="card" data-sample="2" data-brand="salon"></canvas><figcaption><b>Studio Nine</b>Hair salon</figcaption></figure>
+    </div>
+  </div>
+</div>
+</body>
+</html>

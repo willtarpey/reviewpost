@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Poppins:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Fraunces:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@500&family=Allura&family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Bodoni+Moda:wght@500&display=swap">
+<link rel="stylesheet" href="assets.css">
+<script src="/reviewshot/templates.js"></script>
+<script src="/reviewshot/templates-more.js"></script>
+<script src="assets.js" defer></script>
+<title>screenshot-3-review-button</title>
+</head>
+<body>
+
+<style>
+  .panel { position: relative; width: 520px; height: 640px; background: #fff; border-radius: 16px; overflow: hidden; color: #1f1f1f; box-shadow: 0 40px 100px rgba(0,0,0,.6); font-family: -apple-system, "Segoe UI", system-ui, sans-serif; }
+  .ph { padding: 20px 24px 14px; border-bottom: 1px solid #ececec; }
+  .ph h3 { margin: 0 0 4px; font-size: 20px; }
+  .ph .score { color: #555; font-size: 14px; }
+  .ph .score b { font-size: 22px; color: #1f1f1f; margin-right: 6px; }
+  .ph .score span { color: #f4b400; letter-spacing: 1px; }
+  .rv { padding: 16px 24px; border-bottom: 1px solid #f0f0f0; }
+  .who { display: flex; gap: 10px; align-items: center; }
+  .who b { display: block; font-size: 14px; }
+  .who small { color: #f4b400; font-size: 12px; }
+  .av { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 700; font-size: 14px; }
+  .rv p { margin: 8px 0 0; font-size: 14px; line-height: 1.45; color: #333; }
+  .rs-btn { display: inline-flex; margin: 10px 0 2px; padding: 7px 13px; border: 1px solid #16170f; border-radius: 999px; background: #eefca6; color: #16170f; font: 600 12px/1 system-ui, sans-serif; }
+  .rs-batch { position: absolute; right: 18px; bottom: 18px; padding: 13px 20px; border: 1.5px solid #eefca6; border-radius: 999px; background: #16170f; color: #eefca6; font: 700 14px/1 system-ui, sans-serif; box-shadow: 0 10px 30px rgba(0,0,0,.3); }
+  .hl { outline: 3px solid #eefca6; outline-offset: 4px; border-radius: 999px; }
+  .arrow { position: absolute; color: #eefca6; font-weight: 700; font-size: 15px; }
+</style>
+<div class="glow" style="right:40px;top:60px"></div>
+<div class="frame" style="grid-template-columns: 430px 1fr">
+  <div class="copy">
+    <img class="logo" src="/reviewshot/assets/logo.png" alt="">
+    <h1>One click from <em>your reviews</em></h1>
+    <p class="sub">A <b style="color:#fff">Make post</b> button appears under every review on Google Maps and Trustpilot. Got lots? Batch up to 10 at once.</p>
+  </div>
+  <div class="stage">
+    <div class="panel">
+      <div class="ph"><h3>Greenleaf Garden Centre</h3><div class="score"><b>4.9</b><span>★★★★★</span> 312 reviews</div></div>
+      
+  <div class="rv">
+    <div class="who"><span class="av" style="background:#7b61ff">S</span><div><b>Sarah Mitchell</b><small>★★★★★ · 2 days ago</small></div></div>
+    <p>Absolutely brilliant service from start to finish. The team went above and beyond!</p>
+    <button class="rs-btn">✦ Make post</button>
+  </div>
+      
+  <div class="rv">
+    <div class="who"><span class="av" style="background:#0f9d58">C</span><div><b>Chris Hobbs</b><small>★★★★★ · 1 week ago</small></div></div>
+    <p>Plenty of parking, a gorgeous café and staff who really know their plants. Our new favourite weekend spot!</p>
+    <button class="rs-btn">✦ Make post</button>
+  </div>
+      
+  <div class="rv">
+    <div class="who"><span class="av" style="background:#db4437">A</span><div><b>Amira Khan</b><small>★★★★★ · 3 weeks ago</small></div></div>
+    <p>Friendly, fast and fairly priced. Couldn’t ask for more.</p>
+    <button class="rs-btn">✦ Make post</button>
+  </div>
+      <button class="rs-batch">✦ Make posts from 10 reviews</button>
+    </div>
+  </div>
+</div>
+<script>document.querySelectorAll('.rs-btn')[1].classList.add('hl');</script>
+</body>
+</html>

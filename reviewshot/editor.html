@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ReviewPost</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&family=Fraunces:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@500&family=Allura&family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Bodoni+Moda:wght@500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+  <link rel="icon" href="icons/icon-32.png">
+  <link rel="stylesheet" href="editor.css">
+</head>
+<body>
+  <aside class="panel">
+    <header class="brand-head">
+      <img src="assets/logo.png" alt="ReviewPost" class="logo">
+      <button id="plan-badge" class="badge" type="button" title="Your plan">Free</button>
+    </header>
+
+    <section>
+      <h2>Review</h2>
+      <div id="batchBar" class="batch" hidden>
+        <div class="batch-head">
+          <span id="batchCount">Batch</span>
+          <button id="clearBatch" type="button" class="link">Clear batch</button>
+        </div>
+        <div id="batchChips" class="batch-chips"></div>
+      </div>
+      <label>Review text
+        <textarea id="text" rows="6"></textarea>
+      </label>
+      <label><span>Headline <span class="label-note">for big-type designs</span></span>
+        <input id="headline" type="text" placeholder="Picked from the review automatically">
+      </label>
+      <div class="row">
+        <label class="grow">Reviewer
+          <input id="name" type="text" placeholder="e.g. Sarah Mitchell">
+        </label>
+        <label class="narrow">Stars
+          <select id="rating">
+            <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
+          </select>
+        </label>
+      </div>
+      <div class="row">
+        <label class="grow">Source
+          <select id="source">
+            <option>Google</option><option>Trustpilot</option><option>Facebook</option>
+            <option>Tripadvisor</option><option>Etsy</option><option>Other</option>
+          </select>
+        </label>
+        <label class="check">
+          <input id="firstOnly" type="checkbox" checked> Short name (Sarah M.)
+        </label>
+      </div>
+    </section>
+
+    <section>
+      <h2>Brand kit <small>saved automatically</small></h2>
+      <div class="kit-switcher" id="kitSwitcher">
+        <select id="brandSelect" aria-label="Brand kit"></select>
+        <button id="newBrand" type="button" class="secondary">+ New <span class="pro-tag agency-tag">AGENCY</span></button>
+      </div>
+      <label><span>Your website <span class="label-note">we'll match your colours</span></span>
+        <span class="inline">
+          <input id="website" type="text" placeholder="yourbusiness.co.uk" inputmode="url" autocomplete="url">
+          <button id="matchColours" type="button" class="secondary">Match</button>
+        </span>
+      </label>
+      <p id="matchStatus" class="status" hidden></p>
+      <label>Business name
+        <input id="businessName" type="text" placeholder="Your business">
+      </label>
+      <button id="useBusiness" type="button" class="link suggest" hidden></button>
+      <label>Handle or web address
+        <input id="handle" type="text" placeholder="@yourbusiness">
+      </label>
+      <label class="upload" id="logoUpload">
+        <input id="logo" type="file" accept="image/png,image/jpeg,image/svg+xml,image/webp">
+        <span id="logoLabel">Upload logo</span>
+        <span class="pro-tag">PRO</span>
+      </label>
+      <button id="clearLogo" type="button" class="link" hidden>Remove logo</button>
+      <div class="row colors">
+        <label>Background <input id="primary" type="color"></label>
+        <label>Accent <input id="accent" type="color"></label>
+        <label>Text <input id="textColor" type="color"></label>
+      </div>
+      <label>Font
+        <select id="font"></select>
+      </label>
+      <div class="kit-links">
+        <button id="resetBrand" type="button" class="link">Reset brand kit</button>
+        <button id="deleteBrand" type="button" class="link" hidden>Delete this brand kit</button>
+        <button id="moreBrands" type="button" class="link">Posting for several brands? <span class="pro-tag">AGENCY</span></button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Design</h2>
+      <div id="tilesWrap" class="tiles-wrap">
+        <div id="tiles" class="tiles"></div>
+        <div class="tiles-fade" aria-hidden="true"></div>
+      </div>
+      <button id="viewMore" type="button" class="view-more" hidden></button>
+
+      <div class="field">
+        <span class="field-label">Stars</span>
+        <div class="segmented" data-style="stars">
+          <button type="button" data-value="rounded">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.8l-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z" fill="currentColor" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>
+            Rounded
+          </button>
+          <button type="button" data-value="sharp">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7.1L12 17.3 5.8 21l1.6-7.1L2 9.2l7.1-.6z" fill="currentColor"/></svg>
+            Sharp
+          </button>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">Corners</span>
+        <div class="segmented" data-style="corners">
+          <button type="button" data-value="rounded">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            Rounded
+          </button>
+          <button type="button" data-value="square">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            Square
+          </button>
+        </div>
+      </div>
+
+      <label>Size
+        <select id="size"></select>
+      </label>
+
+      <button id="requestDesign" type="button" class="cta-card">
+        <span class="cta-spark" aria-hidden="true">✦</span>
+        <span class="cta-text">
+          <strong>Want a custom design?</strong>
+          <span>Request one made for your brand →</span>
+        </span>
+      </button>
+    </section>
+
+    <section>
+      <h2>Background image <span class="pro-tag">PRO</span></h2>
+      <p class="hint">Used by the Editorial, Glass, Testimonial, Luxe, Polaroid and Duotone designs. Without one they use a blend of your brand colours.</p>
+      <label class="upload">
+        <input id="bgImage" type="file" accept="image/png,image/jpeg,image/webp">
+        <span id="bgLabel">Upload image</span>
+      </label>
+      <button id="clearBg" type="button" class="link" hidden>Remove image</button>
+    </section>
+
+    <footer class="actions">
+      <button id="downloadAll" type="button" class="secondary wide" hidden>Download all</button>
+      <button id="download" type="button" class="primary">Download PNG</button>
+      <p id="upsell" class="hint">Free downloads include a small “Made with ReviewPost” mark. <a href="#" id="goPro">Go Pro to remove it</a></p>
+      <p class="hint footer-links"><a href="privacy.html" target="_blank">Privacy</a> · <a href="#" id="contactLink">Contact</a></p>
+    </footer>
+  </aside>
+
+  <main class="stage">
+    <div class="preview">
+      <div id="sizeTabs" class="size-tabs" role="group" aria-label="Post size"></div>
+      <div id="proBanner" class="pro-banner" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" fill="currentColor"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        Pro design: upgrade to download without watermarks
+        <button id="bannerUnlock" type="button">Unlock</button>
+      </div>
+      <canvas id="canvas" aria-label="Post preview"></canvas>
+      <div id="multi" class="multi" hidden></div>
+    </div>
+  </main>
+
+  <dialog id="upgrade" class="upgrade">
+    <form method="dialog">
+      <button value="close" class="close" aria-label="Close">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <header class="upgrade-head">
+        <img src="assets/logo.png" alt="ReviewPost" class="upgrade-logo">
+        <h3>Choose your plan</h3>
+        <p>Turn your best reviews into posts people stop scrolling for.</p>
+      </header>
+      <div id="plans" class="plans"></div>
+      <p id="teamNote" class="team-note" hidden>
+        <strong>Adding teammates:</strong> up to 3 people can share your Agency plan. They install ReviewPost, open
+        this window and click <em>Already paid? Restore your plan</em>, then sign in with your account email.
+      </p>
+      <p class="billing-links">
+        <button type="button" class="link" id="restore">Already paid? Restore your plan</button>
+        <button type="button" class="link" id="manage" hidden>Manage billing</button>
+        <a class="link" href="privacy.html" target="_blank">Privacy</a>
+      </p>
+      <button value="close" class="link later">Maybe later</button>
+    </form>
+  </dialog>
+
+  <dialog id="request" class="upgrade request">
+    <form id="requestForm" novalidate>
+      <button type="button" class="close" data-close aria-label="Close">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <header class="upgrade-head">
+        <img src="assets/logo.png" alt="ReviewPost" class="upgrade-logo">
+        <h3>Request a custom design</h3>
+        <p>Tell us the look you're after and we'll reply by email.</p>
+      </header>
+      <div class="plan request-card">
+        <div id="requestFields">
+          <div class="row">
+            <label class="grow">Your name
+              <input id="reqName" type="text" autocomplete="name" required>
+            </label>
+            <label class="grow">Email
+              <input id="reqEmail" type="email" autocomplete="email" required>
+            </label>
+          </div>
+          <label>Business or website
+            <input id="reqBusiness" type="text">
+          </label>
+          <label>What would you like?
+            <textarea id="reqMessage" rows="5" required placeholder="E.g. a Christmas design in our brand colours, or a post style like our Instagram grid…"></textarea>
+          </label>
+          <p id="reqError" class="status error" hidden></p>
+          <button type="submit" class="primary" id="reqSubmit">Send request</button>
+          <p class="hint req-note">Agency plans include up to 3 bespoke templates. For other plans we'll send a quote.</p>
+        </div>
+        <div id="requestDone" class="request-done" hidden>
+          <span class="done-icon" aria-hidden="true">✓</span>
+          <h4>Request ready</h4>
+          <p id="requestDoneText"></p>
+          <button type="button" class="secondary wide" data-close>Done</button>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="vendor/ExtPay.js"></script>
+  <script src="billing.js"></script>
+  <script src="vendor/qrcode.js"></script>
+  <script src="templates.js"></script>
+  <script src="templates-more.js"></script>
+  <script src="palette.js"></script>
+  <script src="editor.js"></script>
+</body>
+</html>

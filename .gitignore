@@ -1,0 +1,5 @@
+.DS_Store
+.claude/
+dist/
+# The full-quality promo (85MB) is too big for GitHub; the website uses its own web copy in website/media.
+video/reviewpost-promo.mp4

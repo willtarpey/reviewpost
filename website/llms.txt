@@ -1,0 +1,26 @@
+# ReviewPost
+
+> ReviewPost is a Chrome extension that turns Google Maps and Trustpilot reviews into branded social media images in one click. It's made for small businesses, local shops and the agencies that run their social media.
+
+## What it does
+- Adds a "Make post" button under reviews on Google Maps and Trustpilot. On any other site, highlight a review, right-click and choose "Make a ReviewPost from this review".
+- Matches brand colours automatically from the business's website; you choose the font, star style and corners.
+- 21 testimonial designs (3 free, 18 on Pro), including Spotlight, Card, Bold, Editorial, Poster, Glass, Neon, Polaroid and Ticket (with a QR code to your website).
+- Exports every design as an Instagram/Facebook post (1080×1080), a Story, Reel or TikTok cover (1080×1920, laid out clear of the app's buttons and captions) and a LinkedIn/Facebook link image (1200×627). All three sizes download together in one zip.
+- Batch mode: send up to 10 reviews to the editor and download a post for each (Pro).
+- Private: reviews, brand kits and images stay in the user's browser. No account needed to start.
+
+## Pricing (GBP, monthly, cancel any time)
+- Free: £0. 3 designs, colour matching, all sizes, small "Made with ReviewPost" mark.
+- Pro: £8/month. All 21 designs, no watermark, your logo, background images, batch mode.
+- Agency: £29/month. Everything in Pro plus 5 brand kits, 3 team seats, 3 bespoke templates and priority support.
+
+## Good fit for
+Cafés, restaurants, salons, barbers, trades, clinics, dentists, gyms, shops, estate agents, and social media managers or agencies posting customer reviews for clients.
+
+## Links
+- [Home](https://willtarpey.github.io/reviewpost/)
+- [Guide: how to turn Google reviews into Instagram posts](https://willtarpey.github.io/reviewpost/guides/turn-google-reviews-into-instagram-posts.html)
+- [Privacy policy](https://willtarpey.github.io/reviewpost/privacy.html)
+- Contact: hello@willtarpey.com
+- Made by Will Tarpey: https://willtarpey.com

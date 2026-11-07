@@ -1,0 +1,17 @@
+:root { --bg: #141416; --panel: #1f1f23; --line: #34343a; --lime: #eefca6; --ink: #ffffff; --muted: #a1a1aa; }
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  width: 1280px; height: 800px; overflow: hidden; background: var(--bg); color: var(--ink);
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px); background-size: 22px 22px;
+}
+.frame { position: relative; width: 100%; height: 100%; display: grid; grid-template-columns: 430px 1fr; align-items: center; gap: 40px; padding: 0 64px 0 72px; }
+.logo { height: 28px; display: block; }
+h1 { font-size: 54px; line-height: 1.04; letter-spacing: -.025em; margin: 26px 0 18px; font-weight: 700; }
+h1 em { font-family: "Playfair Display", Georgia, serif; font-style: italic; font-weight: 600; color: var(--lime); letter-spacing: -.01em; }
+.sub { font-size: 20px; line-height: 1.45; color: var(--muted); margin: 0; }
+.pill { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 16px; border-radius: 999px; border: 1.5px solid var(--lime); color: var(--lime); font-weight: 700; font-size: 15px; }
+.glow { position: absolute; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(238,252,166,.16), rgba(238,252,166,0) 65%); pointer-events: none; }
+canvas.post { display: block; border-radius: 10px; box-shadow: 0 30px 80px rgba(0,0,0,.55); }
+.stage { position: relative; height: 100%; display: grid; place-items: center; }

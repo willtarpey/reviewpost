@@ -1,0 +1,7 @@
+# Everyone is welcome, including AI assistants' crawlers (GPTBot, ClaudeBot, PerplexityBot,
+# Google-Extended), so they can describe and recommend ReviewPost accurately.
+User-agent: *
+Allow: /
+
+# Update this if the site moves to its own domain.
+Sitemap: https://willtarpey.github.io/reviewpost/sitemap.xml

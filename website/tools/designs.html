@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Draws real ReviewPost designs for the website. Run: node render.mjs (writes ../img/designs/*.webp) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Poppins:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Fraunces:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@500&family=Allura&family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Bodoni+Moda:wght@500&display=swap">
+<script src="../../reviewshot/vendor/qrcode.js"></script>
+<script src="../../reviewshot/templates.js"></script>
+<script src="../../reviewshot/templates-more.js"></script>
+</head>
+<body>
+<script>
+const REVIEWS = {
+  coffee: { text: 'Best flat white in town, and the team remember your order after one visit. Our new favourite spot!', headline: 'Best flat white in town', subtext: 'The team remember your order after one visit. Our new favourite spot!', name: 'Sarah M.', initials: 'SM' },
+  garden: { text: 'Plenty of parking, a gorgeous café and staff who really know their plants. Our new favourite weekend spot!', headline: 'Our new favourite weekend spot', subtext: 'Plenty of parking, a gorgeous café and staff who really know their plants.', name: 'Chris H.', initials: 'CH' },
+  salon: { text: 'Friendly, fast and fairly priced. Couldn’t ask for more. Will definitely be back!', headline: 'Friendly, fast and fairly priced', subtext: 'Couldn’t ask for more. Will definitely be back!', name: 'Amira K.', initials: 'AK' },
+  bakery: { text: 'The sourdough is unreal and the cinnamon buns sell out by ten for a reason. Worth the early alarm.', headline: 'The sourdough is unreal', subtext: 'The cinnamon buns sell out by ten for a reason. Worth the early alarm.', name: 'Tom R.', initials: 'TR' }
+};
+const BRANDS = {
+  coffee: { businessName: 'Harbour Coffee Co.', handle: '@harbourcoffee', website: 'harbourcoffee.co.uk', primary: '#16170f', accent: '#eefca6', text: '#ffffff', font: 'inter' },
+  garden: { businessName: 'Greenleaf Garden Centre', handle: '@greenleafgardens', website: 'greenleaf.co.uk', primary: '#22412f', accent: '#f2c46d', text: '#ffffff', font: 'jakarta' },
+  bakery: { businessName: 'Crumb & Co.', handle: '@crumbandco', website: 'crumbandco.co.uk', primary: '#7a2e2a', accent: '#f7d9c4', text: '#ffffff', font: 'fraunces' },
+  salon: { businessName: 'Studio Nine', handle: '@studionine', website: 'studionine.co.uk', primary: '#1d2a4d', accent: '#ff9e7a', text: '#ffffff', font: 'poppins' }
+};
+// [file, design, brand, size]
+const JOBS = [
+  ['hero-main', 'spotlight', 'coffee', 'post'], ['hero-left', 'testimonial', 'garden', 'post'], ['hero-right', 'glass', 'salon', 'post'],
+  ['g-editorial', 'editorial', 'bakery', 'post'], ['g-card', 'card', 'garden', 'post'], ['g-neon', 'neon', 'salon', 'post'],
+  ['g-polaroid', 'polaroid', 'coffee', 'post'], ['g-luxe', 'luxe', 'bakery', 'post'], ['g-ticket', 'ticket', 'coffee', 'post'],
+  ['g-aurora', 'aurora', 'garden', 'post'], ['g-bold', 'bold', 'salon', 'post'], ['g-split', 'split', 'bakery', 'post'],
+  ['g-badge', 'badge', 'garden', 'post'], ['g-marker', 'marker', 'coffee', 'post'], ['g-duotone', 'duotone', 'salon', 'post'],
+  ['size-post', 'aurora', 'coffee', 'post'], ['size-story', 'aurora', 'coffee', 'story'], ['size-landscape', 'aurora', 'coffee', 'landscape'],
+  ['brand-1', 'poster', 'coffee', 'post'], ['brand-2', 'poster', 'garden', 'post'], ['brand-3', 'poster', 'bakery', 'post'], ['brand-4', 'poster', 'salon', 'post']
+];
+async function renderAll() {
+  const fams = ['Inter', 'Plus Jakarta Sans', 'Poppins', 'Fraunces', 'Playfair Display', 'DM Sans'];
+  await Promise.all([...fams.flatMap((f) => ['500', '600', '700', '800'].map((w) => document.fonts.load(`${w} 32px "${f}"`))), ...DISPLAY_LOADS.map((f) => document.fonts.load(f)), document.fonts.load('italic 600 32px "Playfair Display"')]);
+  const out = {};
+  for (const [file, design, b, size] of JOBS) {
+    const { w, h } = SIZES[size];
+    const c = document.createElement('canvas'); c.width = w; c.height = h;
+    const brand = BRANDS[b], r = REVIEWS[b];
+    TEMPLATES[design].draw(c.getContext('2d'), w, h, { ...r, rating: 5, source: 'Google', sourceLabel: 'Google review', handle: brand.handle, brand, style: { stars: 'rounded', corners: 'rounded' }, logo: null, bg: null });
+    const scale = size === 'post' ? 720 / w : 720 / Math.max(w, h) * (size === 'story' ? 1.25 : 1.4);
+    const s = document.createElement('canvas'); s.width = Math.round(w * scale); s.height = Math.round(h * scale);
+    const sx = s.getContext('2d'); sx.imageSmoothingQuality = 'high'; sx.drawImage(c, 0, 0, s.width, s.height);
+    out[file] = s.toDataURL('image/webp', 0.88);
+  }
+  return out;
+}
+</script>
+</body>
+</html>

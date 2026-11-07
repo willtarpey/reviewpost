@@ -15,6 +15,9 @@ const REVIEWS = {
   coffee: { text: 'Best flat white in town, and the team remember your order after one visit. Our new favourite spot!', headline: 'Best flat white in town', subtext: 'The team remember your order after one visit. Our new favourite spot!', name: 'Sarah M.', initials: 'SM' },
   garden: { text: 'Plenty of parking, a gorgeous café and staff who really know their plants. Our new favourite weekend spot!', headline: 'Our new favourite weekend spot', subtext: 'Plenty of parking, a gorgeous café and staff who really know their plants.', name: 'Chris H.', initials: 'CH' },
   salon: { text: 'Friendly, fast and fairly priced. Couldn’t ask for more. Will definitely be back!', headline: 'Friendly, fast and fairly priced', subtext: 'Couldn’t ask for more. Will definitely be back!', name: 'Amira K.', initials: 'AK' },
+  ledger: { text: 'Sorted our year-end accounts in a week and explained everything in plain English. Wish we’d switched years ago.', headline: 'Wish we’d switched years ago', subtext: 'Sorted our year-end accounts in a week and explained everything in plain English.', name: 'Priya S.', initials: 'PS' },
+  trades: { text: 'Turned up on time, left the place spotless and the final bill matched the quote to the penny.', headline: 'Matched the quote to the penny', subtext: 'Turned up on time and left the place spotless.', name: 'Dan W.', initials: 'DW' },
+  clinic: { text: 'Six weeks of physio and I’m back running pain-free. Every session had a clear plan and real progress.', headline: 'Back running pain-free', subtext: 'Every session had a clear plan and real progress.', name: 'Helen O.', initials: 'HO' },
   bakery: { text: 'The sourdough is unreal and the cinnamon buns sell out by ten for a reason. Worth the early alarm.', headline: 'The sourdough is unreal', subtext: 'The cinnamon buns sell out by ten for a reason. Worth the early alarm.', name: 'Tom R.', initials: 'TR' }
 };
 const BRANDS = {
@@ -42,6 +45,9 @@ const BRANDS = {
   teal: { businessName: 'Studio Nine', handle: '@studionine', website: 'studionine.co.uk', primary: '#0e6b6b', accent: '#ffd166', text: '#ffffff', font: 'jakarta' },
   terracotta: { businessName: 'Crumb & Co.', handle: '@crumbandco', website: 'crumbandco.co.uk', primary: '#c4552b', accent: '#ffe2bf', text: '#ffffff', font: 'playfair' },
   orange: { businessName: 'Harbour Coffee Co.', handle: '@harbourcoffee', website: 'harbourcoffee.co.uk', primary: '#ff8a1f', accent: '#1a1a1a', text: '#1a1a1a', font: 'grotesk' },
+  ledger: { businessName: 'Northgate Accountants', handle: '@northgateaccounts', website: 'northgate.co.uk', primary: '#14213d', accent: '#f2c14e', text: '#ffffff', font: 'jakarta' },
+  trades: { businessName: 'Brightwire Electrical', handle: '@brightwire', website: 'brightwire.co.uk', primary: '#ffd23f', accent: '#111111', text: '#111111', font: 'grotesk' },
+  clinic: { businessName: 'Stride Physio', handle: '@stridephysio', website: 'stridephysio.co.uk', primary: '#cdeedc', accent: '#1d7a52', text: '#0f3324', font: 'poppins' },
   coral: { businessName: 'Greenleaf Garden Centre', handle: '@greenleafgardens', website: 'greenleaf.co.uk', primary: '#ff9b85', accent: '#2b0f0b', text: '#2b0f0b', font: 'poppins' },
   plum: { businessName: 'Studio Nine', handle: '@studionine', website: 'studionine.co.uk', primary: '#3b1240', accent: '#ff9ad5', text: '#ffffff', font: 'fraunces' }
 };
@@ -55,7 +61,10 @@ const JOBS = [
   ['g-badge', 'badge', 'blush', 'post', 'garden'], ['g-glass', 'glass', 'ink', 'post', 'coffee', 'photos/coffee-latte.jpg'],
   ['g-split', 'split', 'cobalt', 'post', 'bakery'], ['g-ticket', 'ticket', 'butter', 'post', 'coffee'],
   ['g-marker', 'marker', 'ink', 'post', 'coffee'], ['g-shapes', 'shapes', 'coral', 'post', 'garden'],
-  ['size-post', 'stack', 'peach', 'post'], ['size-story', 'shapes', 'lavender', 'story'], ['size-landscape', 'badge', 'mint', 'landscape'],
+  ['size-post', 'polaroid', 'sand', 'post', 'coffee', 'photos/coffee-latte.jpg'], ['size-story', 'glass', 'ink', 'story', 'coffee', 'photos/coffee-latte.jpg'], ['size-landscape', 'polaroid', 'sage', 'landscape', 'coffee', 'photos/coffee-cheers.jpg'],
+  // Guide examples: LinkedIn (landscape) and Stories (tall)
+  ['li-accountant', 'card', 'ledger', 'landscape', 'ledger'], ['li-trades', 'bold', 'trades', 'landscape', 'trades'], ['li-clinic', 'badge', 'clinic', 'landscape', 'clinic'],
+  ['st-polaroid', 'polaroid', 'sand', 'story', 'coffee', 'photos/coffee-latte.jpg'], ['st-bold', 'bold', 'tomato', 'story', 'salon'], ['st-glass', 'glass', 'ink', 'story', 'coffee', 'photos/coffee-latte.jpg'],
   ['brand-1', 'poster', 'coffee', 'post'], ['brand-2', 'poster', 'garden', 'post'], ['brand-3', 'poster', 'bakery', 'post'], ['brand-4', 'poster', 'salon', 'post']
 ];
 // Carousel candidates: [file, design, palette, review, photo]

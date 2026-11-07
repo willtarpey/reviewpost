@@ -71,14 +71,92 @@ if (drifters.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) 
   update();
 }
 
-/* Designs marquee: a second copy of the images makes the loop seamless. */
-const track = document.querySelector('.marquee-track');
-[...(track?.children || [])].forEach((img) => {
-  const copy = img.cloneNode(true);
-  copy.alt = '';
-  copy.setAttribute('aria-hidden', 'true');
-  track.append(copy);
-});
+/* Designs carousel: drifts on its own (hover doesn't stop it) and can be swiped, dragged,
+   scrolled or stepped with the arrow buttons and keys. A second copy of the images makes it loop. */
+const marquee = document.querySelector('.marquee');
+const track = marquee?.querySelector('.marquee-track');
+if (marquee && track) {
+  [...track.children].forEach((img) => {
+    const copy = img.cloneNode(true);
+    copy.alt = '';
+    copy.setAttribute('aria-hidden', 'true');
+    track.append(copy);
+  });
+
+  const SPEED = 32; // px per second
+  const autoplay = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const gap = () => parseFloat(getComputedStyle(track).columnGap) || 0;
+  const loopWidth = () => (track.scrollWidth + gap()) / 2; // width of one set of images
+  const step = () => (track.children[0]?.getBoundingClientRect().width || 260) + gap();
+  let pos = 0, last = 0, holdUntil = 0, visible = true, dragging = false, glide = null;
+
+  const wrap = (x) => { const w = loopWidth(); return w ? ((x % w) + w) % w : x; };
+  const apply = () => { pos = wrap(pos); marquee.scrollLeft = pos; };
+  const hold = (ms = 1800) => { holdUntil = performance.now() + ms; };
+
+  // Keep scroll position in sync when the visitor scrolls natively (touch swipe, trackpad).
+  marquee.addEventListener('scroll', () => {
+    if (Math.abs(marquee.scrollLeft - Math.round(pos)) > 2 && !glide) {
+      hold();
+      pos = marquee.scrollLeft;
+      const w = loopWidth();
+      // Near either end, jump to the matching spot in the other copy so swiping never runs out.
+      if (pos < 4) pos += w; else if (pos > w + 4) pos -= w; else return;
+      marquee.scrollLeft = pos;
+    }
+  }, { passive: true });
+  marquee.addEventListener('touchstart', () => hold(60000), { passive: true });
+  marquee.addEventListener('touchend', () => hold(), { passive: true });
+
+  // Mouse drag (touch uses native scrolling).
+  let startX = 0, startPos = 0;
+  marquee.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    dragging = true; glide = null; startX = e.clientX; startPos = pos;
+    marquee.classList.add('dragging');
+    marquee.setPointerCapture(e.pointerId);
+  });
+  marquee.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    pos = startPos - (e.clientX - startX);
+    hold(); apply();
+  });
+  const endDrag = () => { if (!dragging) return; dragging = false; marquee.classList.remove('dragging'); hold(); };
+  marquee.addEventListener('pointerup', endDrag);
+  marquee.addEventListener('pointercancel', endDrag);
+
+  // Buttons and arrow keys glide by one design.
+  const nudge = (dir) => {
+    glide = { from: pos, to: pos + dir * step(), start: performance.now() };
+    hold(2500);
+  };
+  document.getElementById('designsPrev')?.addEventListener('click', () => nudge(-1));
+  document.getElementById('designsNext')?.addEventListener('click', () => nudge(1));
+  marquee.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); nudge(e.key === 'ArrowLeft' ? -1 : 1); }
+  });
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([en]) => { visible = en.isIntersecting; }).observe(marquee);
+  }
+
+  const tick = (now) => {
+    const dt = Math.min(now - (last || now), 64) / 1000;
+    last = now;
+    if (glide) {
+      const t = Math.min((now - glide.start) / 450, 1);
+      const ease = 1 - Math.pow(1 - t, 3);
+      pos = glide.from + (glide.to - glide.from) * ease;
+      apply();
+      if (t === 1) glide = null;
+    } else if (autoplay && visible && !dragging && now > holdUntil) {
+      pos += SPEED * dt;
+      apply();
+    }
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
 
 /* Video: big play button that hands over to the native controls. */
 const video = document.getElementById('promo');

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- If the site moves to its own domain, update these addresses. Submit this file in Google Search Console and Bing Webmaster Tools. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://willtarpey.github.io/reviewpost/</loc></url>
-  <url><loc>https://willtarpey.github.io/reviewpost/guides/turn-google-reviews-into-instagram-posts.html</loc></url>
-  <url><loc>https://willtarpey.github.io/reviewpost/privacy.html</loc></url>
+  <url><loc>https://www.getreviewpost.com/</loc></url>
+  <url><loc>https://www.getreviewpost.com/guides/turn-google-reviews-into-instagram-posts.html</loc></url>
+  <url><loc>https://www.getreviewpost.com/privacy.html</loc></url>
 </urlset>

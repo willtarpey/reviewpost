@@ -19,8 +19,8 @@
 Cafés, restaurants, salons, barbers, trades, clinics, dentists, gyms, shops, estate agents, and social media managers or agencies posting customer reviews for clients.
 
 ## Links
-- [Home](https://willtarpey.github.io/reviewpost/)
-- [Guide: how to turn Google reviews into Instagram posts](https://willtarpey.github.io/reviewpost/guides/turn-google-reviews-into-instagram-posts.html)
-- [Privacy policy](https://willtarpey.github.io/reviewpost/privacy.html)
+- [Home](https://www.getreviewpost.com/)
+- [Guide: how to turn Google reviews into Instagram posts](https://www.getreviewpost.com/guides/turn-google-reviews-into-instagram-posts.html)
+- [Privacy policy](https://www.getreviewpost.com/privacy.html)
 - Contact: hello@willtarpey.com
 - Made by Will Tarpey: https://willtarpey.com

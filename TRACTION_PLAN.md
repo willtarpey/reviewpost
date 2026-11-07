@@ -23,7 +23,7 @@ All three reward the same things: a clear, consistent description of what Review
 
 ## Week 1: foundations (about 2 hours)
 
-1. **Choose the site's address and put it live.** A dedicated domain like reviewpost.co.uk builds search authority faster than a subfolder or a netlify.app address. Check what's free at a registrar. Then replace `YOUR-DOMAIN` in `robots.txt` and `sitemap.xml`, and set `STORE_URL` in `main.js` once the listing is approved.
+1. **Put the site live on getreviewpost.com.** A dedicated domain builds search authority faster than a subfolder. The site files already use `https://www.getreviewpost.com/`; follow the DNS steps for 123-reg, then set `STORE_URL` in `main.js` once the listing is approved.
 2. **Google Search Console.** Add the domain, verify it, and submit `sitemap.xml`. This is also how you verify the domain for the Web Store's Official URL.
 3. **Bing Webmaster Tools.** Import from Search Console in one click. ChatGPT's search and Microsoft Copilot use Bing's index, so this matters for AEO as much as for Bing.
 4. **Link everything together.** Add the site to the Web Store listing (Homepage URL), the YouTube channel and video description, and your Instagram, LinkedIn and willtarpey.com. Use the same one-line description everywhere: *"ReviewPost turns Google and Trustpilot reviews into branded social posts in one click."* Repeating the same description is how AI assistants learn what ReviewPost is.
